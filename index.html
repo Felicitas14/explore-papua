@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Papua - PapuaVerse Tourism Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <!-- ==================== PRELOADER SCREEN ==================== -->
+    <div id="preloader">
+        <div class="loader-content">
+            <!-- Stylized Papua Bird Silhouette -->
+            <div class="loader-logo">
+                <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Stylized Bird of Paradise -->
+                    <path d="M50 20C45 35 25 45 10 50C25 55 45 65 50 80C55 65 75 55 90 50C75 45 55 35 50 20Z" fill="url(#logo-grad)" />
+                    <circle cx="50" cy="50" r="8" fill="#F5E6CA" />
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#4DA8DA" />
+                            <stop offset="100%" stop-color="#2E8B57" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h2 class="loader-title">Explore Papua</h2>
+            <p class="loader-subtitle" data-i18n="heroSubtitle">Satu Perjalanan, Ribuan Cerita dari Surga Timur</p>
+            <div class="loader-progress-bar">
+                <div id="loader-progress-fill"></div>
+            </div>
+            <span id="loader-percentage">0%</span>
+        </div>
+    </div>
+
+    <!-- ==================== GSAP TRANSITION OVERLAY ==================== -->
+    <div id="transition-overlay"></div>
+
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
+    <header class="glass-header">
+        <div class="header-container">
+            <a href="#" class="logo spa-trigger" data-target="home">
+                <span class="logo-accent">Explore</span> Papua
+            </a>
+            
+            <nav class="nav-links-wrap">
+                <a href="#" class="nav-link active" data-target="home" data-i18n="navHome">Beranda</a>
+                <a href="#" class="nav-link" data-target="destinations" data-i18n="navDestinations">Destinasi</a>
+                <a href="#" class="nav-link" data-target="culture" data-i18n="navCulture">Budaya</a>
+                <a href="#" class="nav-link" data-target="food" data-i18n="navFood">Kuliner</a>
+                <a href="#" class="nav-link" data-target="virtual-tour" data-i18n="navVirtualTour">Tur Virtual</a>
+                <a href="#" class="nav-link" data-target="mini-game" data-i18n="navMiniGame">Mini Game</a>
+                <a href="#" class="nav-link" data-target="about" data-i18n="navAbout">Tentang</a>
+            </nav>
+
+            <div class="header-controls">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle-btn" class="glass-btn icon-btn" title="Toggle Theme">
+                    ☀️ <span class="theme-label" data-i18n="lightMode">Mode Terang</span>
+                </button>
+                
+                <!-- Language Toggle -->
+                <div class="lang-switcher">
+                    <button id="lang-id" class="lang-btn active">🇮🇩 ID</button>
+                    <span class="divider">|</span>
+                    <button id="lang-en" class="lang-btn">🇬🇧 EN</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== FLOATING AUDIO CONTROL PANEL ==================== -->
+    <div class="floating-audio-panel glass-card">
+        <div class="audio-panel-header">
+            <span>🎵 Papua Ambience</span>
+        </div>
+        <div class="audio-controls">
+            <button id="music-toggle-btn" class="glass-btn audio-btn">
+                <span>🪕 Flute Music</span>
+                <span class="audio-status">OFF</span>
+            </button>
+            <button id="ambient-toggle-btn" class="glass-btn audio-btn">
+                <span>🌊 Nature Sounds</span>
+                <span class="audio-status">OFF</span>
+            </button>
+            <div class="vol-slider-wrap">
+                <span>🔈</span>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
+                <span>🔊</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN PAGE CONTAINER ==================== -->
+    <main class="page-container">
+
+        <!-- ==================== 1. HOME SCREEN ==================== -->
+        <section id="home-screen" class="page-screen active">
+            <!-- Fullscreen Ken Burns Hero Slider -->
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)), url('/static/images/raja_ampat_hero.png');"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)), url('/static/images/baliem_valley_hero.png');"></div>
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)), url('/static/images/cenderawasih_bay_hero.png');"></div>
+                
+                <button class="hero-arrow prev">❮</button>
+                <button class="hero-arrow next">❯</button>
+            </div>
+
+            <!-- Floating Birds & Cloud Effects -->
+            <div class="floating-elements">
+                <div class="floating-bird bird-1"></div>
+                <div class="floating-bird bird-2"></div>
+                <div class="floating-cloud cloud-1"></div>
+                <div class="floating-cloud cloud-2"></div>
+            </div>
+
+            <div class="hero-overlay-content">
+                <div class="hero-content text-center">
+                    <h1 class="font-bold" data-i18n="heroTitle">Jelajahi Papua</h1>
+                    <p class="mt-4" data-i18n="heroSubtitle">Satu Perjalanan, Ribuan Cerita dari Surga Timur</p>
+                    <div class="hero-actions mt-8">
+                        <button class="glass-btn primary-btn spa-trigger" data-target="destinations" data-i18n="heroBtn">Mulai Menjelajah</button>
+                    </div>
+                </div>
+
+                <!-- Statistics Container -->
+                <div class="stats-container glass-card">
+                    <div class="stat-item">
+                        <h3 data-i18n="statsAreaVal">319.000+ km²</h3>
+                        <span data-i18n="statsArea">Luas Wilayah</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3 data-i18n="statsTribesVal">250+</h3>
+                        <span data-i18n="statsTribes">Suku Adat</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3 data-i18n="statsForestVal">80%+</h3>
+                        <span data-i18n="statsForest">Hutan Lindung</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3 data-i18n="statsBiodiversityVal">Peringkat #1 Dunia</h3>
+                        <span data-i18n="statsBiodiversity">Keanekaragaman Hayati</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Content: Featured Grid -->
+            <div class="home-bottom-content section-padding">
+                <div class="container mx-auto">
+                    <div class="section-title-wrap text-center mb-12" data-aos="fade-up">
+                        <h2 data-i18n="featuredTitle">Destinasi Unggulan</h2>
+                        <p data-i18n="featuredSubtitle" class="text-muted">Keajaiban alam Papua yang menanti kunjungan Anda</p>
+                    </div>
+                    
+                    <div id="featured-destinations-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Dynamic Featured Cards inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 2. DESTINATIONS SCREEN ==================== -->
+        <section id="destinations-screen" class="page-screen">
+            <div class="section-padding">
+                <div class="container mx-auto">
+                    <div class="section-title-wrap text-center mb-12">
+                        <h2 data-i18n="destTitle">Destinasi Papua</h2>
+                        <p data-i18n="destSubtitle">Temukan keajaiban alam dan tempat wisata menakjubkan</p>
+                    </div>
+
+                    <!-- Search & Filter Controls -->
+                    <div class="filter-controls-wrap glass-card mb-8">
+                        <div class="search-input-box">
+                            <input type="text" id="dest-search-input" data-i18n="searchPlaceholder" placeholder="Cari destinasi atau wilayah...">
+                            <span class="search-icon">🔍</span>
+                        </div>
+                        <div class="filter-select-box">
+                            <select id="region-filter-select">
+                                <option value="" data-i18n="allRegions">Semua Wilayah</option>
+                                <option value="Raja Ampat">Raja Ampat</option>
+                                <option value="Nabire">Nabire</option>
+                                <option value="Jayapura">Jayapura</option>
+                                <option value="Wamena">Wamena</option>
+                                <option value="Biak">Biak</option>
+                                <option value="Merauke">Merauke</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="destinations-layout-grid">
+                        <!-- Left Side: Clickable Interactive Papua Map -->
+                        <div class="map-section-wrap glass-card" data-aos="fade-right">
+                            <div class="map-header">
+                                <h5>🗺️ Interactive Papua Map</h5>
+                                <p data-i18n="mapInstructions" class="text-xs text-muted">Klik penanda bersinar pada peta untuk menjelajahi destinasi</p>
+                            </div>
+                            <!-- Map SVG Canvas container -->
+                            <div id="indonesia-map-container" class="map-relative-canvas">
+                                <!-- Abstract Vector Shape of Papua Island -->
+                                <svg class="papua-svg-outline" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="map-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="var(--ocean-blue)" stop-opacity="0.3" />
+                                            <stop offset="50%" stop-color="var(--forest-green)" stop-opacity="0.4" />
+                                            <stop offset="100%" stop-color="var(--warm-brown)" stop-opacity="0.2" />
+                                        </linearGradient>
+                                        <filter id="glow-shadow">
+                                            <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#4DA8DA" flood-opacity="0.5"/>
+                                        </filter>
+                                    </defs>
+                                    <!-- Drawing stylized Papua boundary -->
+                                    <path class="papua-land-path" d="M 50 150 C 40 180, 20 180, 20 220 C 20 250, 80 280, 100 290 C 120 300, 120 250, 150 240 C 180 230, 210 260, 230 250 C 250 240, 260 210, 280 210 C 300 210, 320 250, 340 250 C 360 250, 370 200, 420 180 C 460 160, 480 180, 520 190 C 560 200, 570 220, 600 230 C 640 240, 680 230, 720 230 C 760 230, 780 240, 820 240 C 860 240, 920 260, 950 250 L 980 250 L 980 480 C 900 480, 850 490, 820 450 C 800 420, 780 390, 750 380 C 720 370, 700 370, 650 350 C 600 330, 550 350, 500 330 C 450 310, 420 320, 390 320 C 360 320, 340 300, 310 290 C 270 280, 250 290, 230 280 C 200 270, 180 280, 150 260 Z" fill="url(#map-gradient)" stroke="var(--ocean-blue)" stroke-width="2" />
+                                    <!-- Biak Island outline -->
+                                    <path class="papua-land-path" d="M 450 110 C 460 100, 510 110, 520 120 C 530 130, 500 150, 480 150 C 460 150, 440 120, 450 110 Z" fill="url(#map-gradient)" stroke="var(--ocean-blue)" stroke-width="1.5" />
+                                    <!-- Grid overlay for tech look -->
+                                    <g stroke="rgba(255,255,255,0.05)" stroke-width="0.5">
+                                        <line x1="100" y1="0" x2="100" y2="500" />
+                                        <line x1="200" y1="0" x2="200" y2="500" />
+                                        <line x1="300" y1="0" x2="300" y2="500" />
+                                        <line x1="400" y1="0" x2="400" y2="500" />
+                                        <line x1="500" y1="0" x2="500" y2="500" />
+                                        <line x1="600" y1="0" x2="600" y2="500" />
+                                        <line x1="700" y1="0" x2="700" y2="500" />
+                                        <line x1="800" y1="0" x2="800" y2="500" />
+                                        <line x1="900" y1="0" x2="900" y2="500" />
+                                        <line x1="0" y1="100" x2="1000" y2="100" />
+                                        <line x1="0" y1="200" x2="1000" y2="200" />
+                                        <line x1="0" y1="300" x2="1000" y2="300" />
+                                        <line x1="0" y1="400" x2="1000" y2="400" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Destination Cards Listing -->
+                        <div class="destinations-list-wrap">
+                            <div id="destinations-grid" class="dest-grid-container">
+                                <!-- Dynamic destination cards go here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 3. CULTURE SCREEN ==================== -->
+        <section id="culture-screen" class="page-screen">
+            <div class="section-padding">
+                <div class="container mx-auto">
+                    <div class="section-title-wrap text-center mb-12">
+                        <h2 data-i18n="cultureTitle">Galeri Budaya Papua</h2>
+                        <p data-i18n="cultureSubtitle">Menyelami adat istiadat, tarian, rumah adat, dan instrumen sakral</p>
+                    </div>
+
+                    <div id="culture-gallery-container" class="culture-grid-container">
+                        <!-- Dynamic culture cards insert here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 4. TRADITIONAL FOOD SCREEN ==================== -->
+        <section id="food-screen" class="page-screen">
+            <div class="section-padding">
+                <div class="container mx-auto">
+                    <div class="section-title-wrap text-center mb-12">
+                        <h2 data-i18n="foodTitle">Kuliner Tradisional</h2>
+                        <p data-i18n="foodSubtitle">Cita rasa otentik dengan resep leluhur tanah Papua</p>
+                    </div>
+
+                    <div id="food-slider-container" class="food-cards-layout">
+                        <!-- Dynamic food cards insert here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 5. VIRTUAL TOUR SCREEN ==================== -->
+        <section id="virtual-tour-screen" class="page-screen">
+            <!-- Fullscreen 360 Viewer Frame -->
+            <div class="vt-viewer-wrapper">
+                <div id="panorama-canvas-container"></div>
+                
+                <!-- Start Overlay -->
+                <div id="vt-overlay-btn" class="vt-start-overlay">
+                    <div class="overlay-modal glass-card text-center p-8">
+                        <h2 data-i18n="vtTitle">Tur Virtual 360° Papua</h2>
+                        <p data-i18n="vtSubtitle" class="mb-6">Rasakan keindahan alam Raja Ampat secara langsung dari layar Anda</p>
+                        <button onclick="startMainVirtualTour()" class="glass-btn primary-btn py-3 px-8 text-lg" data-i18n="vtStartBtn">Mulai Tur Virtual</button>
+                    </div>
+                </div>
+
+                <!-- Floating UI Controls -->
+                <div class="vt-controls-overlay glass-card">
+                    <button id="vt-zoom-in" onclick="zoomTourIn()" class="vt-ctrl-btn" title="Zoom In">➕</button>
+                    <button id="vt-zoom-out" onclick="zoomTourOut()" class="vt-ctrl-btn" title="Zoom Out">➖</button>
+                    <button id="vt-rotate-btn" onclick="toggleTourAutoRotate()" class="vt-ctrl-btn active" title="Toggle Auto Rotate">🔄</button>
+                </div>
+
+                <!-- Floating Instruction Toast -->
+                <div class="vt-instructions-toast glass-card">
+                    <p data-i18n="vtInstructions" class="text-xs text-center">Gunakan mouse (klik & seret) untuk memutar kamera 360 derajat. Nikmati deburan ombak dan kicauan burung.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 6. MINI GAME SCREEN ==================== -->
+        <section id="mini-game-screen" class="page-screen">
+            <div class="section-padding">
+                <div class="container mx-auto">
+                    <div class="section-title-wrap text-center mb-12">
+                        <h2 data-i18n="gameTitle">Mini Game: Tebak Budaya Papua</h2>
+                        <p data-i18n="gameSubtitle">Uji pengetahuan Anda tentang kebudayaan Papua dan raih lencana terbaik!</p>
+                    </div>
+
+                    <div class="game-layout-grid">
+                        <!-- Left Side: Active Game Panel -->
+                        <div class="game-play-panel glass-card p-8">
+                            <!-- Intro Screen -->
+                            <div id="quiz-intro" class="text-center py-10">
+                                <div class="badge-icon-intro mb-6">🏆</div>
+                                <h3 data-i18n="gameTitle">Mini Game: Tebak Budaya Papua</h3>
+                                <p data-i18n="gameSubtitle" class="text-muted max-w-md mx-auto mt-4">Jawab 10 pertanyaan tentang tradisi, kuliner, dan geografi Papua. Menangkan lencana 'Papua Expert'!</p>
+                                <button onclick="startQuiz()" class="glass-btn primary-btn mt-8 px-8 py-3 text-lg" data-i18n="gameStartBtn">Mulai Kuis</button>
+                            </div>
+
+                            <!-- Play Screen -->
+                            <div id="quiz-play" class="d-none">
+                                <div class="quiz-progress-wrap mb-6">
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span data-i18n="progressLabel">Kemajuan</span>
+                                        <span id="quiz-progress-text">1 / 10</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div id="quiz-progress-bar"></div>
+                                    </div>
+                                </div>
+                                <h3 id="quiz-question" class="mb-8 font-semibold">Pertanyaan Kuis</h3>
+                                <div id="quiz-choices" class="choices-container grid grid-cols-1 gap-4">
+                                    <!-- Choice buttons rendered dynamically -->
+                                </div>
+                                <div id="quiz-feedback" class="quiz-feedback-box"></div>
+                                <button id="quiz-next-btn" onclick="nextQuestion()" class="glass-btn primary-btn mt-6 w-full py-3 d-none" data-i18n="gameNextBtn">Pertanyaan Selanjutnya</button>
+                            </div>
+
+                            <!-- Result Screen -->
+                            <div id="quiz-result" class="d-none text-center">
+                                <h3 class="mb-4" data-i18n="gameScore">Skor Anda</h3>
+                                <div id="quiz-final-score" class="final-score-circle">0</div>
+                                <div id="quiz-badge-display" class="badge-display-card my-6">
+                                    <!-- Badge details -->
+                                </div>
+                                
+                                <!-- Leaderboard Entry submission -->
+                                <div class="score-submission-form mt-8 glass-card p-6">
+                                    <h5 class="mb-4" data-i18n="gamePlayerName">Nama Anda</h5>
+                                    <div class="flex gap-4">
+                                        <input type="text" id="player-name-input" class="flex-1 px-4 py-2 rounded-lg" data-i18n="gamePlayerName" placeholder="Masukkan nama...">
+                                        <button id="submit-score-btn" onclick="submitScore()" class="glass-btn primary-btn py-2 px-6" data-i18n="gameSubmitBtn">Simpan Skor</button>
+                                    </div>
+                                    <div id="submit-feedback" class="text-sm mt-3 text-green-400 font-semibold"></div>
+                                </div>
+
+                                <button onclick="resetGame()" class="glass-btn mt-6 py-2 px-6" data-i18n="gameStartBtn">Ulangi Kuis</button>
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Leaderboard Panel -->
+                        <div class="leaderboard-panel glass-card p-8">
+                            <h3 class="mb-6 font-bold" data-i18n="leaderboardTitle">Papan Peringkat Global</h3>
+                            <div class="table-responsive">
+                                <table class="leaderboard-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="rank-col" data-i18n="gameRank">Peringkat</th>
+                                            <th class="player-col" data-i18n="gamePlayerName">Nama</th>
+                                            <th class="score-col" data-i18n="scoreLabel">Skor</th>
+                                            <th class="badge-col" data-i18n="badgeLabel">Lencana</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leaderboard-list">
+                                        <!-- Scores injected asynchronously -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 7. ABOUT SCREEN ==================== -->
+        <section id="about-screen" class="page-screen">
+            <div class="section-padding">
+                <div class="container mx-auto max-w-4xl">
+                    <div class="section-title-wrap text-center mb-12">
+                        <h2 data-i18n="aboutTitle">Tentang Explore Papua</h2>
+                        <p data-i18n="aboutSubtitle">Menjaga warisan budaya dan memperkenalkan Papua kepada dunia</p>
+                    </div>
+
+                    <div class="about-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="about-card glass-card p-8" data-aos="fade-right">
+                            <h3 class="mb-4" data-i18n="missionTitle">Misi Kami</h3>
+                            <p data-i18n="missionText" class="text-muted leading-relaxed">Platform ini dibuat sebagai media pelestarian digital yang interaktif untuk memperkenalkan keanekaragaman alam, budaya, dan kekayaan tradisi Papua. Kami percaya bahwa integrasi teknologi modern dan pelestarian budaya dapat menginspirasi dunia untuk mengapresiasi dan melindungi bumi Papua.</p>
+                        </div>
+                        <div class="about-card glass-card p-8" data-aos="fade-left">
+                            <h3 class="mb-4" data-i18n="visionTitle">Visi Global</h3>
+                            <p data-i18n="visionText" class="text-muted leading-relaxed">Mempromosikan pariwisata berkelanjutan dan edukasi budaya yang inklusif, sehingga generasi mendatang dapat terus menghargai kearifan lokal masyarakat adat Papua.</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack-section glass-card p-8 mt-8" data-aos="fade-up">
+                        <h3 class="mb-6 text-center" data-i18n="techStackTitle">Teknologi yang Digunakan</h3>
+                        <div class="flex flex-wrap justify-center gap-6 text-center">
+                            <span class="tech-badge">🐍 Flask Backend</span>
+                            <span class="tech-badge">🛢️ SQLite Database</span>
+                            <span class="tech-badge">🌐 HTML5 / CSS3</span>
+                            <span class="tech-badge">⚡ GSAP Animations</span>
+                            <span class="tech-badge">🔄 AOS Libraries</span>
+                            <span class="tech-badge">📐 Three.js WebGL</span>
+                            <span class="tech-badge">🔊 Web Audio API</span>
+                        </div>
+                    </div>
+
+                    <div class="developer-profile-section glass-card p-8 mt-8" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="mb-4" data-i18n="devProfileTitle">Profil Pengembang</h3>
+                        <p data-i18n="devText" class="text-muted mb-4">Platform Explore Papua (PapuaVerse) dikembangkan menggunakan keahlian modern dalam desain UI/UX web dan pemrograman interaktif.</p>
+                        <div class="dev-details text-sm">
+                            <p>🧑‍💻 <strong>Project Developer:</strong> Antigravity AI</p>
+                            <p>💼 <strong>Platform Scope:</strong> Competition & Exhibition Digital Tourism Portfolio</p>
+                            <p>📅 <strong>Version:</strong> 1.0.0 (July 2026)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer-wrap" style="background-image: linear-gradient(to top, rgba(13, 27, 21, 0.95), rgba(13, 27, 21, 0.75)), url('/static/images/sunset_boat.png');">
+        <div class="footer-container text-center section-padding">
+            <!-- Boat silhouette floating effect -->
+            <div class="footer-boat-graphic" data-aos="fade-up">⛵</div>
+            
+            <h2 class="footer-quote mb-4 font-bold" data-i18n="footerQuote">Di mana Alam, Budaya, dan Teknologi Bersatu.</h2>
+            
+            <div class="social-icons flex justify-center gap-6 my-8">
+                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon">Youtube</a>
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Github</a>
+            </div>
+
+            <p class="footer-rights text-xs text-muted" data-i18n="footerRights">Hak Cipta Terpelihara. Explore Papua.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== LIGHTBOX POP-UP MODAL ==================== -->
+    <div id="lightbox-overlay" class="lightbox-overlay d-none">
+        <div class="lightbox-content glass-card">
+            <span id="lightbox-close" class="lightbox-close-btn">&times;</span>
+            <h3 id="lightbox-title" class="mb-4">Title</h3>
+            <div class="lightbox-img-wrapper mb-6">
+                <img id="lightbox-img" src="" alt="Lightbox image">
+            </div>
+            <p id="lightbox-desc" class="text-muted leading-relaxed">Description text</p>
+        </div>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- GSAP for smooth animations & page transitions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- AOS for scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Three.js for 360 virtual tour rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+
+    <!-- Main ES6 Modules -->
+    <script type="module" src="/static/js/main.js"></script>
+
+</body>
+</html>
